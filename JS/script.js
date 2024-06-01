@@ -50,16 +50,41 @@ empleadosVendedores.push(new vendedores('Diego', 'Ramírez', 19, 'Olavarría', '
 empleadosVendedores.push(new vendedores('Paula', 'Sánchez', 39, 'Junín', 'Noroeste'));
 empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sudeste'));
 
-let buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
+// let buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
+
+
+
+
+
+
 
 do {
-    if (isNaN(buscarInfoVendedor)) {
-        buscarInfoVendedor = parseInt(prompt("Ingresa uno de los siguientes valores:\nRecuerda:\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
-    }
-    while (isNaN(buscarInfoVendedor) || buscarInfoVendedor < 1 || buscarInfoVendedor > 5);
-}
+    buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
 
-    switch (buscarInfoVendedor) {
+
+    if (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1) {
+        alert("El número ingresado no es valido");
+    }
+} while (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1);
+alert("El número ingresado fue " + buscarInfoVendedor);
+
+
+/* prompt("Ingresa tu nombre:");
+let nombre = prompt("Ingresa tu nombre:");
+do {
+    if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
+        alert("Tenes que ingresar un nombre.");
+        nombre = prompt("Ingresa tu nombre:");
+    } else {
+        alert("¡Hola " + nombre + "!");
+        break;
+    }
+} while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
+*/
+
+
+
+switch (buscarInfoVendedor) {
     case 1:
         console.log(empleadosVendedores.map((i) => i.nombre));
         break;
