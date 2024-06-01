@@ -27,6 +27,7 @@ do {
 } while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
 */
 
+//////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
 
 class vendedores {
     constructor(nombre, apellido, edad, ciudad, zona) {
@@ -49,30 +50,77 @@ empleadosVendedores.push(new vendedores('Diego', 'Ramírez', 19, 'Olavarría', '
 empleadosVendedores.push(new vendedores('Paula', 'Sánchez', 39, 'Junín', 'Noroeste'));
 empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sudeste'));
 
+let buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
 
-
-
-class productosDetalle {
-    constructor(nombre, cantidad, categoria, fechaVenc, precioSinIva,) {
-        this.nombre = nombre;
-        this.cantidad = parseInt(cantidad);
-        this.categoria = categoria;
-        this.fechaVenc = new Date(fechaVenc);
-        this.precioSinIva = parseFloat(precioSinIva);
+do {
+    if (isNaN(buscarInfoVendedor)) {
+        buscarInfoVendedor = parseInt(prompt("Ingresa uno de los siguientes valores:\nRecuerda:\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
     }
-};
-const productos = [];
-productos.push(new productosDetalle('Manzana', 909, 'Alimentos frescos', 17/6/2024, 6550));
-productos.push(new productosDetalle('Leche', 2421, 'Productos lácteos', 2/2/2024, 755));
-productos.push(new productosDetalle('Salmon', 2050, 'Carnes y pescados', 23/10/2024, 1402));
-productos.push(new productosDetalle('Tomate', 0, 'Frutas y verduras', 18/7/2024, 2740));
-productos.push(new productosDetalle('Helado', 2887, 'Productos congelados', 7/3/2024, 5027));
-productos.push(new productosDetalle('Pan francés', 2845, 'Panadería y pastelería', 19/1/2024, 5031));
-productos.push(new productosDetalle('Agua', 113, 'Bebidas', 5/12/2024, 447));
-productos.push(new productosDetalle('Detergente', 2975, 'Productos de limpieza', 15/8/2024, 4422));
-productos.push(new productosDetalle('Champú', 920, 'Artículos de cuidado personal', 2/9/2024, 4855));
-productos.push(new productosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 20/4/2024, 7456));
+    while (isNaN(buscarInfoVendedor) || buscarInfoVendedor < 1 || buscarInfoVendedor > 5);
+}
 
+    switch (buscarInfoVendedor) {
+    case 1:
+        console.log(empleadosVendedores.map((i) => i.nombre));
+        break;
+    case 2:
+        console.log(empleadosVendedores.map((i) => i.apellido));
+        break;
+    case 3:
+        console.log(empleadosVendedores.map((i) => i.edad));
+        break;
+    case 4:
+        console.log(empleadosVendedores.map((i) => i.ciudad));
+        break;
+    case 5:
+        console.log(empleadosVendedores.map((i) => i.zona));
+        break;
+    default:
+        alert("El dato ingresado no es valido");
+}
+
+
+
+
+
+
+/////////////////////////////////////// APLICAR FIND
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////// VENDEDORES - FIN
+//////////////////////////////////////////////////////////////////////////////// PRODUCTOS - INICIO
+
+// class productosDetalle {
+//     constructor(nombre, cantidad, categoria, fechaVenc, precioSinIva,) {
+//         this.nombre = nombre;
+//         this.cantidad = parseInt(cantidad);
+//         this.categoria = categoria;
+//         this.fechaVenc = new Date(fechaVenc);
+//         this.precioSinIva = parseFloat(precioSinIva);
+//     }
+//     sumarIva(){
+//         this.precioSinIva = this.precioSinIva *1.21;
+//     }
+// };
+// const productos = [];
+// productos.push(new productosDetalle('Manzana', 909, 'Alimentos frescos', 17/6/2024, 6550));
+// productos.push(new productosDetalle('Leche', 2421, 'Productos lácteos', 2/2/2024, 755));
+// productos.push(new productosDetalle('Salmon', 2050, 'Carnes y pescados', 23/10/2024, 1402));
+// productos.push(new productosDetalle('Tomate', 0, 'Frutas y verduras', 18/7/2024, 2740));
+// productos.push(new productosDetalle('Helado', 2887, 'Productos congelados', 7/3/2024, 5027));
+// productos.push(new productosDetalle('Pan francés', 2845, 'Panadería y pastelería', 19/1/2024, 5031));
+// productos.push(new productosDetalle('Agua', 113, 'Bebidas', 5/12/2024, 447));
+// productos.push(new productosDetalle('Detergente', 2975, 'Productos de limpieza', 15/8/2024, 4422));
+// productos.push(new productosDetalle('Champú', 920, 'Artículos de cuidado personal', 2/9/2024, 4855));
+// productos.push(new productosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 20/4/2024, 7456));
+
+//////////////////////////////////////////////////////////////////////////////// PRODUCTOS - FIN
 
 
 
