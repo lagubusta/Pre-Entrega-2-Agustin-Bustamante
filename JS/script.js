@@ -13,22 +13,19 @@
 
 
 
-
-/* prompt("Ingresa tu nombre:");
-let nombre = prompt("Ingresa tu nombre:");
-do {
-    if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
-        alert("Tenes que ingresar un nombre.");
-        nombre = prompt("Ingresa tu nombre:");
-    } else {
-        alert("¡Hola " + nombre + "!");
-        break;
-    }
-} while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
-*/
-
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
-
+// let nombre = prompt("Ingresa tu nombre:");
+// do {
+//     if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
+//         alert("Tenes que ingresar un nombre.");
+//         nombre = prompt("Ingresa tu nombre:");
+//     } else {
+//         alert("¡Hola " + nombre + "!");
+//         break;
+//     }
+// } while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
+//////////////////////////////////////////////////////////////////////////////// PROMPT INICIO - FIN
+//////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
 class vendedores {
     constructor(nombre, apellido, edad, ciudad, zona) {
         this.nombre = nombre;
@@ -49,101 +46,73 @@ empleadosVendedores.push(new vendedores('Sofia', 'González', 19, 'Pergamino', '
 empleadosVendedores.push(new vendedores('Diego', 'Ramírez', 19, 'Olavarría', 'Sudoeste'));
 empleadosVendedores.push(new vendedores('Paula', 'Sánchez', 39, 'Junín', 'Noroeste'));
 empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sudeste'));
+// do {
+//     buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
 
-// let buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
-
-
-
-
-
-
-
-do {
-    buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
-
-
-    if (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1) {
-        alert("El número ingresado no es valido");
-    }
-} while (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1);
-alert("El número ingresado fue " + buscarInfoVendedor);
-
-
-/* prompt("Ingresa tu nombre:");
-let nombre = prompt("Ingresa tu nombre:");
-do {
-    if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
-        alert("Tenes que ingresar un nombre.");
-        nombre = prompt("Ingresa tu nombre:");
-    } else {
-        alert("¡Hola " + nombre + "!");
-        break;
-    }
-} while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
-*/
-
-
-
-switch (buscarInfoVendedor) {
-    case 1:
-        console.log(empleadosVendedores.map((i) => i.nombre));
-        break;
-    case 2:
-        console.log(empleadosVendedores.map((i) => i.apellido));
-        break;
-    case 3:
-        console.log(empleadosVendedores.map((i) => i.edad));
-        break;
-    case 4:
-        console.log(empleadosVendedores.map((i) => i.ciudad));
-        break;
-    case 5:
-        console.log(empleadosVendedores.map((i) => i.zona));
-        break;
-    default:
-        alert("El dato ingresado no es valido");
-}
-
-
-
-
-
-
-/////////////////////////////////////// APLICAR FIND
-
-
-
-
-
-
-
-
+//     if (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1) {
+//         alert("El número ingresado no es valido. Tenes que ingresar alguno de estos numeros. \n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona");
+//     }
+// } while (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1);
+// alert("El número ingresado fue " + buscarInfoVendedor);
+/////////////////////////////////////// APLICAR MAP
+// switch (buscarInfoVendedor) {
+//     case 1:
+//         empleadosVendedores.map((i) => console.log(i.nombre));
+//         break;
+//     case 2:
+//         empleadosVendedores.map((i) => console.log("El apellido de " + i.nombre + " es " + i.apellido));
+//         break;
+//     case 3:
+//         empleadosVendedores.map((i) => console.log("La edad de " + i.nombre + " es: " + i.edad));
+//         break;
+//     case 4:
+//         empleadosVendedores.map((i) => console.log("La ciudad donde opera " + i.nombre + " es: " + i.ciudad));
+//         break;
+//     case 5:
+//         empleadosVendedores.map((i) => console.log("La ciudad en la que opera " + i.nombre + " queda en el " + i.zona));
+//         break;
+//     default:
+//         alert("El número ingresado no es valido. Tenes que ingresar alguno de estos numeros. \n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona");
+// }
+/////////////////////////////////////// APLICAR MAP
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - FIN
 //////////////////////////////////////////////////////////////////////////////// PRODUCTOS - INICIO
+class productosDetalle {
+    constructor(nombre, cantidad, categoria, fechaVenc, precioSinIva,) {
+        this.nombre = nombre;
+        this.cantidad = parseInt(cantidad);
+        this.categoria = categoria;
+        this.fechaVenc = new Date(fechaVenc);
+        this.precioSinIva = parseFloat(precioSinIva);
+    }
+    sumarIva() {
+        this.precioSinIva = this.precioSinIva * 1.21;
+    }
+};
+const productos = [];
+productos.push(new productosDetalle('Manzana', 909, 'Alimentos frescos', 17 / 6 / 2024, 6550));
+productos.push(new productosDetalle('Leche', 2421, 'Productos lácteos', 2 / 2 / 2024, 755));
+productos.push(new productosDetalle('Salmon', 2050, 'Carnes y pescados', 23 / 10 / 2024, 1402));
+productos.push(new productosDetalle('Tomate', 0, 'Frutas y verduras', 18 / 7 / 2024, 2740));
+productos.push(new productosDetalle('Helado', 2887, 'Productos congelados', 7 / 3 / 2024, 5027));
+productos.push(new productosDetalle('Pan francés', 2845, 'Panadería y pastelería', 19 / 1 / 2024, 5031));
+productos.push(new productosDetalle('Agua', 113, 'Bebidas', 5 / 12 / 2024, 447));
+productos.push(new productosDetalle('Detergente', 2975, 'Productos de limpieza', 15 / 8 / 2024, 4422));
+productos.push(new productosDetalle('Champú', 920, 'Artículos de cuidado personal', 2 / 9 / 2024, 4855));
+productos.push(new productosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 20 / 4 / 2024, 7456));
 
-// class productosDetalle {
-//     constructor(nombre, cantidad, categoria, fechaVenc, precioSinIva,) {
-//         this.nombre = nombre;
-//         this.cantidad = parseInt(cantidad);
-//         this.categoria = categoria;
-//         this.fechaVenc = new Date(fechaVenc);
-//         this.precioSinIva = parseFloat(precioSinIva);
-//     }
-//     sumarIva(){
-//         this.precioSinIva = this.precioSinIva *1.21;
-//     }
-// };
-// const productos = [];
-// productos.push(new productosDetalle('Manzana', 909, 'Alimentos frescos', 17/6/2024, 6550));
-// productos.push(new productosDetalle('Leche', 2421, 'Productos lácteos', 2/2/2024, 755));
-// productos.push(new productosDetalle('Salmon', 2050, 'Carnes y pescados', 23/10/2024, 1402));
-// productos.push(new productosDetalle('Tomate', 0, 'Frutas y verduras', 18/7/2024, 2740));
-// productos.push(new productosDetalle('Helado', 2887, 'Productos congelados', 7/3/2024, 5027));
-// productos.push(new productosDetalle('Pan francés', 2845, 'Panadería y pastelería', 19/1/2024, 5031));
-// productos.push(new productosDetalle('Agua', 113, 'Bebidas', 5/12/2024, 447));
-// productos.push(new productosDetalle('Detergente', 2975, 'Productos de limpieza', 15/8/2024, 4422));
-// productos.push(new productosDetalle('Champú', 920, 'Artículos de cuidado personal', 2/9/2024, 4855));
-// productos.push(new productosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 20/4/2024, 7456));
+/////////////////////////////////////// APLICAR FILTER
+let buscarInfoProductos = prompt("Ingresar letra o palabra dentro de nombre producto:");
+let productosFiltrados = productos.filter((i) => console.log(i.nombre.includes(buscarInfoProductos)));
+productosFiltrados();
+
+
+
+
+
+
+/////////////////////////////////////// APLICAR FILTER
+
 
 //////////////////////////////////////////////////////////////////////////////// PRODUCTOS - FIN
 
