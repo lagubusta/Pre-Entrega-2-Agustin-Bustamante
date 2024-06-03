@@ -1,10 +1,10 @@
 //           Se necesita,
 //           Estructura HTML
 //           Variables JS necesarias:
-//                  - Arrays;
-//                  - Metodos;
-//                  - Objetos;
-//           - Metodos de busqueda (find()) y filtrado sobre el Array (filter())
+// OK                  - Arrays;
+// OK                  - Metodos;
+// OK                  - Objetos;
+// OK           - Metodos de busqueda (find()) y filtrado sobre el Array (filter())
 //           Proceso requerido:
 //           - Capturar entradas mediante prompt().
 //           - Declarar variables y objetos necesarios para simular el proceso seleccionado.
@@ -14,16 +14,23 @@
 
 
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
-// let nombre = prompt("Ingresa tu nombre:");
-// do {
-//     if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
-//         alert("Tenes que ingresar un nombre.");
-//         nombre = prompt("Ingresa tu nombre:");
-//     } else {
-//         alert("¡Hola " + nombre + "!");
-//         break;
-//     }
-// } while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
+let nombre = prompt("Ingresa tu nombre:");
+do {
+    if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
+        alert("Tenes que ingresar un nombre.");
+        nombre = prompt("Ingresa tu nombre:");
+    } else {
+        alert("¡Hola " + nombre + "!");
+        break;
+    }
+} while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
+
+///////////////// DOM - INICIO
+let contenedor = document.createElement("h2");
+contenedor.textContent = `Hola ${nombre} vamos a hacer un simulacro`
+document.body.appendChild(contenedor);
+document.getElementById("nombre").velue = nombre;
+///////////////// DOM - FIN
 //////////////////////////////////////////////////////////////////////////////// PROMPT INICIO - FIN
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
 class vendedores {
@@ -35,6 +42,7 @@ class vendedores {
         this.zona = zona;
     }
 };
+
 const empleadosVendedores = [];
 empleadosVendedores.push(new vendedores('María', 'García', 32, 'Cañuelas', 'Centro'));
 empleadosVendedores.push(new vendedores('Jaun', 'Pérez', 33, 'La Plata', 'Este'));
@@ -46,6 +54,51 @@ empleadosVendedores.push(new vendedores('Sofia', 'González', 19, 'Pergamino', '
 empleadosVendedores.push(new vendedores('Diego', 'Ramírez', 19, 'Olavarría', 'Sudoeste'));
 empleadosVendedores.push(new vendedores('Paula', 'Sánchez', 39, 'Junín', 'Noroeste'));
 empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sudeste'));
+///////////////////////////////////// AGREGAR NUEVO VENDEDOR
+alert("Vamos a agregar un nuevo vendedor para la provincia de Buenos Aires:");
+
+let nuevoVendedorNombre = prompt("Ingresa el nombre del nuevo vendedor/ra.");
+let nuevoVendedorApellido = prompt("Ingresa el Apellido de " + nuevoVendedorNombre);
+let nuevoVendedorEdad = parseInt(prompt("Ingresa la edad de " + nuevoVendedorNombre));
+let nuevoVendedorCiudad = prompt("Ingresa la ciudad donde opera " + nuevoVendedorNombre);
+let nuevoVendedorZona = prompt("Si Bs. As. capital es el centro, ¿" + nuevoVendedorCiudad + " donde se encuentra?");
+
+let ingresarNuevoVendedor = empleadosVendedores.push(new vendedores(nuevoVendedorNombre, nuevoVendedorApellido, nuevoVendedorEdad, nuevoVendedorCiudad, nuevoVendedorZona));
+
+for (const empleado of empleadosVendedores) {
+    console.log(Object.values(empleado));
+}
+
+let listaVendedores = empleadosVendedores
+let contenedorLista = document.createElement("div");
+
+for (const vendedor of listaVendedores) {
+    let vendedorDiv = document.createElement("div");
+    vendedorDiv.innerHTML = `
+    <h3>Nombre: ${vendedor.nombre}</h3>
+        <ul>
+            <li>Apellido: ${vendedor.apellido}</li>
+            <li>Edad: ${vendedor.edad}</li>
+            <li>Ciudad: ${vendedor.ciudad}</li>
+            <li>Zona: ${vendedor.zona}</li>
+        </ul>
+    `;
+    contenedorLista.appendChild(vendedorDiv);
+}
+document.body.appendChild(contenedorLista);
+
+// let producto = {id: 1, nombre: "arroz", precio: 125};
+// let contenedor = document.createElement("div");
+
+// contenedor.innerHTML = `<h3> ID: ${producto.id} </h3>
+// <p> Producto: ${producto.nombre} </p>
+// <b> $ ${producto.precio}  </b>`;
+
+// document.body.appendChild(contenedor);
+
+///////////////////////////////////// AGREGAR NUEVO VENDEDOR
+///////////////////////////////////// APLICAR MAP
+
 // do {
 //     buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
 
@@ -54,7 +107,7 @@ empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sud
 //     }
 // } while (isNaN(buscarInfoVendedor) || buscarInfoVendedor > 5 || buscarInfoVendedor < 1);
 // alert("El número ingresado fue " + buscarInfoVendedor);
-/////////////////////////////////////// APLICAR MAP
+
 // switch (buscarInfoVendedor) {
 //     case 1:
 //         empleadosVendedores.map((i) => console.log(i.nombre));
@@ -77,56 +130,47 @@ empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sud
 /////////////////////////////////////// APLICAR MAP
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - FIN
 //////////////////////////////////////////////////////////////////////////////// PRODUCTOS - INICIO
-class productosDetalle {
-    constructor(nombre, cantidad, categoria, fechaVenc, precioSinIva,) {
-        this.nombre = nombre;
-        this.cantidad = parseInt(cantidad);
-        this.categoria = categoria;
-        this.fechaVenc = new Date(fechaVenc);
-        this.precioSinIva = parseFloat(precioSinIva);
-    }
-    sumarIva() {
-        this.precioSinIva = this.precioSinIva * 1.21;
-    }
-};
-const productos = [];
-productos.push(new productosDetalle('Manzana', 909, 'Alimentos frescos', 17 / 6 / 2024, 6550));
-productos.push(new productosDetalle('Leche', 2421, 'Productos lácteos', 2 / 2 / 2024, 755));
-productos.push(new productosDetalle('Salmon', 2050, 'Carnes y pescados', 23 / 10 / 2024, 1402));
-productos.push(new productosDetalle('Tomate', 0, 'Frutas y verduras', 18 / 7 / 2024, 2740));
-productos.push(new productosDetalle('Helado', 2887, 'Productos congelados', 7 / 3 / 2024, 5027));
-productos.push(new productosDetalle('Pan francés', 2845, 'Panadería y pastelería', 19 / 1 / 2024, 5031));
-productos.push(new productosDetalle('Agua', 113, 'Bebidas', 5 / 12 / 2024, 447));
-productos.push(new productosDetalle('Detergente', 2975, 'Productos de limpieza', 15 / 8 / 2024, 4422));
-productos.push(new productosDetalle('Champú', 920, 'Artículos de cuidado personal', 2 / 9 / 2024, 4855));
-productos.push(new productosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 20 / 4 / 2024, 7456));
+// class productosDetalle {
+//     constructor(nombre, cantidad, categoria, fechaVenc, precioSinIva,) {
+//         this.nombre = nombre;
+//         this.cantidad = parseInt(cantidad);
+//         this.categoria = categoria;
+//         this.fechaVenc = new Date(fechaVenc);
+//         this.precioSinIva = parseFloat(precioSinIva);
+//     }
+//     sumarIva() {
+//         this.precioSinIva = this.precioSinIva * 1.21;
+//     }
+// };
+// const productos = [];
+// productos.push(new productosDetalle('Manzana', 909, 'Alimentos frescos', 17 / 6 / 2024, 6550));
+// productos.push(new productosDetalle('Leche', 2421, 'Productos lácteos', 2 / 2 / 2024, 755));
+// productos.push(new productosDetalle('Salmon', 2050, 'Carnes y pescados', 23 / 10 / 2024, 1402));
+// productos.push(new productosDetalle('Tomate', 0, 'Frutas y verduras', 18 / 7 / 2024, 2740));
+// productos.push(new productosDetalle('Helado', 2887, 'Productos congelados', 7 / 3 / 2024, 5027));
+// productos.push(new productosDetalle('Pan francés', 2845, 'Panadería y pastelería', 19 / 1 / 2024, 3));
+// productos.push(new productosDetalle('Agua', 113, 'Bebidas', 5 / 12 / 2024, 447));
+// productos.push(new productosDetalle('Detergente', 2975, 'Productos de limpieza', 15 / 8 / 2024, 4422));
+// productos.push(new productosDetalle('Champú', 920, 'Artículos de cuidado personal', 2 / 9 / 2024, 4855));
+// productos.push(new productosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 20 / 4 / 2024, 7456));
 
-/////////////////////////////////////// APLICAR FILTER
-let buscarInfoProductos = prompt("Ingresar letra o palabra dentro de nombre producto:");
-let productosFiltrados = productos.filter((i) => console.log(i.nombre.includes(buscarInfoProductos)));
-productosFiltrados();
+// /////////////////////////////////////// APLICAR FILTER
 
+// alert = ("Vamos a ver cual es el prodcuto que tiene el precio mas bajo.")
+// let buscarInfoProductos = prompt("Ingresar letra o palabra dentro de nombre producto:");
 
+// let productosFiltrados = productos.filter((producto) => producto.nombre.includes(buscarInfoProductos));
+// productosFiltrados.forEach((producto)=> console.log(producto.nombre));
 
-
-
-
-/////////////////////////////////////// APLICAR FILTER
-
+// /////////////////////////////////////// APLICAR FILTER
+// const productoPrecioMinimo = productos.find(producto => {
+//     return producto.precioSinIva === productos.reduce((minPrecio, p) => p.precioSinIva < minPrecio ? p.precioSinIva : minPrecio, productos[0].precioSinIva);
+// });
+// console.log("El producto con menor precio es " + productoPrecioMinimo.nombre +" y su precio es " +productoPrecioMinimo.precioSinIva );
 
 //////////////////////////////////////////////////////////////////////////////// PRODUCTOS - FIN
 
+//////////////////////////////////////////////////////////////////////////////// DOM - INICIO
 
 
-// { nombre: "María", apellido: "García", edad: 32, ciudad: "Cañuelas", zona: "Centro" },
-// { nombre: "Jaun", apellido: "Pérez", edad: 33, ciudad: "La Plata", zona: "Este" },
-// { nombre: "Ana", apellido: "Rodríguez", edad: 36, ciudad: "Mar del Plata", zona: "Sudeste" },
-// { nombre: "Carlo", apellido: "Martínez", edad: 30, ciudad: "Bahía Blanca", zona: "Sudoeste" },
-// { nombre: "Laura", apellido: "Fernández", edad: 42, ciudad: "Tandil", zona: "Sudoeste" },
-// { nombre: "Javier", apellido: "López", edad: 51, ciudad: "San Nicolás de los Arroyos", zona: "Noroeste" },
-// { nombre: "Sofia", apellido: "González", edad: 19, ciudad: "Pergamino", zona: "Noroeste" },
-// { nombre: "Diego", apellido: "Ramírez", edad: 19, ciudad: "Olavarría", zona: "Sudoeste" },
-// { nombre: "Paula", apellido: "Sánchez", edad: 39, ciudad: "Junín", zona: "Noroeste" },
-// { nombre: "Daniel", apellido: "Gómez", edad: 22, ciudad: "Necochea", zona: "Sudeste" },
-
-
+//////////////////////////////////////////////////////////////////////////////// DOM - FIN
