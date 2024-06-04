@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.header {
+    background-color: #1C0824;
+  }
+
+  h2{
+    background-color: #2b063a;
+    color: #F7CB84;
+    font-family: "Buda", serif;
+    padding: 1rem;
+  }
+div{
+    padding: 0.3rem;
+    background-color: #F7CB84;
+    color: #2b063a;
+  }
+  h3{
+    font-size: 14px;
+  }
+  ul{
+    font-size: 12px;
+    font-family: "Buda", serif;
+    flex-direction: row;
+    display: flexbox;
+  }

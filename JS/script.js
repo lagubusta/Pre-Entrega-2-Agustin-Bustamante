@@ -11,6 +11,29 @@
 //           - Crear funciones y/o métodos para realizar operaciones.
 //           - Y finalmente, efectuar una salida, que es el resultado de los datos procesados, la cual puede hacerse por alert() o console.log().*
 
+//////////////////////////////////////////////////////////////////////////////// PESTAÑAS - INICIO
+class itemNavBar {
+    constructor(titulo) {
+        this.titulo = titulo;
+    }
+};
+const navegador = [];
+navegador.push (new itemNavBar('Inicio'));
+navegador.push (new itemNavBar('Vendedores'));
+navegador.push (new itemNavBar('Productos'));
+let navLista = document.createElement("nav");
+
+// let listaNav = navegador;
+
+for(const item of navegador){
+    let nuevoItem = document.createElement("li");
+    nuevoItem.innerHTML = item.titulo;
+    navLista.appendChild(nuevoItem);
+}
+document.body.appendChild(navLista);
+
+//////////////////////////////////////////////////////////////////////////////// PESTAÑAS - FIN
+
 
 
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
@@ -69,6 +92,7 @@ for (const empleado of empleadosVendedores) {
     console.log(Object.values(empleado));
 }
 
+//////////////////////////////////////////////////////////////////////////////// DOM - INICIO
 let listaVendedores = empleadosVendedores
 let contenedorLista = document.createElement("div");
 
@@ -77,24 +101,17 @@ for (const vendedor of listaVendedores) {
     vendedorDiv.innerHTML = `
     <h3>Nombre: ${vendedor.nombre}</h3>
         <ul>
-            <li>Apellido: ${vendedor.apellido}</li>
-            <li>Edad: ${vendedor.edad}</li>
-            <li>Ciudad: ${vendedor.ciudad}</li>
-            <li>Zona: ${vendedor.zona}</li>
+            <li>Apellido: ${vendedor.apellido},  </li>
+            <li>Edad: ${vendedor.edad},  </li>
+            <li>Ciudad: ${vendedor.ciudad},  </li>
+            <li>Zona: ${vendedor.zona}.  </li>
         </ul>
     `;
     contenedorLista.appendChild(vendedorDiv);
 }
 document.body.appendChild(contenedorLista);
+//////////////////////////////////////////////////////////////////////////////// DOM - FIN
 
-// let producto = {id: 1, nombre: "arroz", precio: 125};
-// let contenedor = document.createElement("div");
-
-// contenedor.innerHTML = `<h3> ID: ${producto.id} </h3>
-// <p> Producto: ${producto.nombre} </p>
-// <b> $ ${producto.precio}  </b>`;
-
-// document.body.appendChild(contenedor);
 
 ///////////////////////////////////// AGREGAR NUEVO VENDEDOR
 ///////////////////////////////////// APLICAR MAP
