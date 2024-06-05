@@ -4,6 +4,7 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  font-family: "Buda", serif;
 }
 
 
@@ -21,7 +22,7 @@
   padding-left: 2rem;
 }
 
-.navbar nav ul li a {
+.navbar nav ul li {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
@@ -63,4 +64,9 @@ li {
   color: #F7CB84;
   display: flex;
   background-color: #2b063a;
+}
+
+
+article{
+  background-color: red;
 }
