@@ -11,30 +11,43 @@
 //           - Crear funciones y/o métodos para realizar operaciones.
 //           - Y finalmente, efectuar una salida, que es el resultado de los datos procesados, la cual puede hacerse por alert() o console.log().*
 
-//////////////////////////////////////////////////////////////////////////////// PESTAÑAS - INICIO
-class itemNavBar {
-    constructor(titulo) {
-        this.titulo = titulo;
-    }
-};
-const navegador = [];
-navegador.push (new itemNavBar('Inicio'));
-navegador.push (new itemNavBar('Vendedores'));
-navegador.push (new itemNavBar('Productos'));
-let navLista = document.createElement("nav");
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+/////////////////// DOM ///////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
 
-// let listaNav = navegador;
+const cuerpo = document.body;
+const cabecera = document.getElementById('header');
+const navegacion = document.createElement('div'); 
+const nav = document.createElement('nav');
+const ul = document.createElement('ul');
+const links = ["Index", "Products", "Contact"];
+const liImagen = document.createElement('li');
+const ORIGEN = document.createElement('a');
 
-for(const item of navegador){
-    let nuevoItem = document.createElement("li");
-    nuevoItem.innerHTML = item.titulo;
-    navLista.appendChild(nuevoItem);
+cabecera.appendChild(navegacion);
+navegacion.appendChild(nav);
+nav.appendChild(ul);
+navegacion.className = 'navbar';
+
+// ORIGEN.href = '/';
+
+for (const link of links) {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${link.toLowerCase()}.html" >${link}</a>`;
+    ul.appendChild(li);
 }
-document.body.appendChild(navLista);
 
-//////////////////////////////////////////////////////////////////////////////// PESTAÑAS - FIN
-
-
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+/////////////////// DOM ///////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
 let nombre = prompt("Ingresa tu nombre:");
@@ -53,9 +66,17 @@ let contenedor = document.createElement("h2");
 contenedor.textContent = `Hola ${nombre} vamos a hacer un simulacro`
 document.body.appendChild(contenedor);
 document.getElementById("nombre").velue = nombre;
+
+
+// document.getElementById("nombre").velue = nombre;
 ///////////////// DOM - FIN
 //////////////////////////////////////////////////////////////////////////////// PROMPT INICIO - FIN
 //////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
+
+
+
+
+
 class vendedores {
     constructor(nombre, apellido, edad, ciudad, zona) {
         this.nombre = nombre;
@@ -65,7 +86,6 @@ class vendedores {
         this.zona = zona;
     }
 };
-
 const empleadosVendedores = [];
 empleadosVendedores.push(new vendedores('María', 'García', 32, 'Cañuelas', 'Centro'));
 empleadosVendedores.push(new vendedores('Jaun', 'Pérez', 33, 'La Plata', 'Este'));
@@ -78,19 +98,21 @@ empleadosVendedores.push(new vendedores('Diego', 'Ramírez', 19, 'Olavarría', '
 empleadosVendedores.push(new vendedores('Paula', 'Sánchez', 39, 'Junín', 'Noroeste'));
 empleadosVendedores.push(new vendedores('Daniel', 'Gómez', 22, 'Necochea', 'Sudeste'));
 ///////////////////////////////////// AGREGAR NUEVO VENDEDOR
-alert("Vamos a agregar un nuevo vendedor para la provincia de Buenos Aires:");
 
-let nuevoVendedorNombre = prompt("Ingresa el nombre del nuevo vendedor/ra.");
-let nuevoVendedorApellido = prompt("Ingresa el Apellido de " + nuevoVendedorNombre);
-let nuevoVendedorEdad = parseInt(prompt("Ingresa la edad de " + nuevoVendedorNombre));
-let nuevoVendedorCiudad = prompt("Ingresa la ciudad donde opera " + nuevoVendedorNombre);
-let nuevoVendedorZona = prompt("Si Bs. As. capital es el centro, ¿" + nuevoVendedorCiudad + " donde se encuentra?");
+// alert("Vamos a agregar un nuevo vendedor para la provincia de Buenos Aires:");
 
-let ingresarNuevoVendedor = empleadosVendedores.push(new vendedores(nuevoVendedorNombre, nuevoVendedorApellido, nuevoVendedorEdad, nuevoVendedorCiudad, nuevoVendedorZona));
 
-for (const empleado of empleadosVendedores) {
-    console.log(Object.values(empleado));
-}
+// let nuevoVendedorNombre = prompt("Ingresa el nombre del nuevo vendedor/ra.");
+// let nuevoVendedorApellido = prompt("Ingresa el Apellido de " + nuevoVendedorNombre);
+// let nuevoVendedorEdad = parseInt(prompt("Ingresa la edad de " + nuevoVendedorNombre));
+// let nuevoVendedorCiudad = prompt("Ingresa la ciudad donde opera " + nuevoVendedorNombre);
+// let nuevoVendedorZona = prompt("Si Bs. As. capital es el centro, ¿" + nuevoVendedorCiudad + " donde se encuentra?");
+
+// let ingresarNuevoVendedor = empleadosVendedores.push(new vendedores(nuevoVendedorNombre, nuevoVendedorApellido, nuevoVendedorEdad, nuevoVendedorCiudad, nuevoVendedorZona));
+
+// for (const empleado of empleadosVendedores) {
+//     console.log(Object.values(empleado));
+// }
 
 //////////////////////////////////////////////////////////////////////////////// DOM - INICIO
 let listaVendedores = empleadosVendedores
@@ -111,8 +133,6 @@ for (const vendedor of listaVendedores) {
 }
 document.body.appendChild(contenedorLista);
 //////////////////////////////////////////////////////////////////////////////// DOM - FIN
-
-
 ///////////////////////////////////// AGREGAR NUEVO VENDEDOR
 ///////////////////////////////////// APLICAR MAP
 
