@@ -1,23 +1,3 @@
-//           Se necesita,
-//           Estructura HTML
-//           Variables JS necesarias:
-// OK                  - Arrays;
-// OK                  - Metodos;
-// OK                  - Objetos;
-// OK           - Metodos de busqueda (find()) y filtrado sobre el Array (filter())
-//           Proceso requerido:
-//           - Capturar entradas mediante prompt().
-//           - Declarar variables y objetos necesarios para simular el proceso seleccionado.
-//           - Crear funciones y/o métodos para realizar operaciones.
-//           - Y finalmente, efectuar una salida, que es el resultado de los datos procesados, la cual puede hacerse por alert() o console.log().*
-
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-/////////////////// DOM ///////////////////////
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-///////////////////////////////////////////////
 
 const cuerpo = document.body;
 const cabecera = document.getElementById('header');
@@ -25,7 +5,7 @@ const navegacion = document.createElement('div');
 const nav = document.createElement('nav');
 const ul = document.createElement('ul');
 const links = ["Index", "Products", "Contact"];
-const liImagen = document.createElement('li');
+// const liImagen = document.createElement('li');
 const ORIGEN = document.createElement('a');
 
 cabecera.appendChild(navegacion);
@@ -38,15 +18,7 @@ for (const link of links) {
     li.innerHTML = `${link.toUpperCase()}`;
     ul.appendChild(li);
 }
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-/////////////////// DOM ///////////////////////
-///////////////////////////////////////////////
-///////////////////////////////////////////////
-///////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
 let nombre = prompt("Ingresa tu nombre:");
 do {
     if (nombre === "" || !isNaN(nombre) || nombre.match(/\d/)) {
@@ -57,15 +29,13 @@ do {
         break;
     }
 } while (nombre === "" || !isNaN(nombre) || nombre.match(/\d/));
+console.log("Hola " + nombre +"!");
 
-///////////////// DOM - INICIO
 let contenedor = document.createElement("h2");
 contenedor.textContent = `Hola ${nombre} vamos a hacer un simulacro`
 document.body.appendChild(contenedor);
-document.getElementById("nombre").value = nombre;
-///////////////// DOM - FIN
-//////////////////////////////////////////////////////////////////////////////// PROMPT INICIO - FIN
-//////////////////////////////////////////////////////////////////////////////// VENDEDORES - INICIO
+// document.getElementById("nombre").value = nombre;
+
 class Vendedor {
     constructor(nombre, apellido, edad, ciudad, zona) {
         this.nombre = nombre;
@@ -86,7 +56,6 @@ empleadosVendedores.push(new Vendedor('Sofia', 'González', 19, 'Pergamino', 'No
 empleadosVendedores.push(new Vendedor('Diego', 'Ramírez', 19, 'Olavarría', 'Sudoeste'));
 empleadosVendedores.push(new Vendedor('Paula', 'Sánchez', 39, 'Junín', 'Noroeste'));
 empleadosVendedores.push(new Vendedor('Daniel', 'Gómez', 22, 'Necochea', 'Sudeste'));
-///////////////////////////////////// AGREGAR NUEVO VENDEDOR
 
 alert("Vamos a agregar un nuevo vendedor para la provincia de Buenos Aires:");
 
@@ -106,7 +75,6 @@ for (const empleado of empleadosVendedores) {
     console.log(Object(empleado));
 }
 
-//////////////////////////////////////////////////////////////////////////////// DOM - INICIO
 let listaVendedores = empleadosVendedores
 let contenedorLista = document.createElement("div");
 
@@ -124,9 +92,6 @@ for (const vendedor of listaVendedores) {
     contenedorLista.appendChild(vendedorDiv);
 }
 document.body.appendChild(contenedorLista);
-//////////////////////////////////////////////////////////////////////////////// DOM - FIN
-///////////////////////////////////// AGREGAR NUEVO VENDEDORA
-///////////////////////////////////// APLICAR MAP
 
 do {
     buscarInfoVendedor = parseInt(prompt("¿Que información de vendedor/ra queres buscar?\nEn el siguiente prompt ingresa el número de la opción que elegiste.\n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona"));
@@ -155,12 +120,6 @@ switch (buscarInfoVendedor) {
     default:
         alert("El número ingresado no es valido. Tenes que ingresar alguno de estos numeros. \n1) Nombre\n2) Apellido\n3) Edad\n4) Ciudad\n5) Zona");
 }
-/////////////////////////////////////// APLICAR MAP
-//////////////////////////////////////////////////////////////////////////////// VENDEDORES - FIN
-//////////////////////////////////////////////////////////////////////////////// PRODUCTOS - INICIO
-
-
-
 
 class ProductosDetalle {
     constructor(nombre, cantidad, categoria, anioVenc, precioSinIva,) {
@@ -186,14 +145,14 @@ productos.push(new ProductosDetalle('Detergente', 2975, 'Productos de limpieza',
 productos.push(new ProductosDetalle('Champú', 920, 'Artículos de cuidado personal', 2024, 4855));
 productos.push(new ProductosDetalle('Blem', 3011, 'Productos de cuidado del hogar', 2022, 7456));
 
-/////////////////////////////////////// DOM PRODUCTOS
 let listaProductos = productos
-let contenedorListaProductos = document.createElement("div");
+let contenedorListaProductos = document.createElement("section");
+contenedorListaProductos.innerHTML = `<h3>Vamos a ver los productos:</h3>`;
 
 for (const productoDom of listaProductos) {
     let productoDiv = document.createElement("article");
     productoDiv.innerHTML =
-        `<h3>Nombre: ${productoDom.nombre}.</h3>
+        `<h4 class="nombre-producto">${productoDom.nombre}.</h4>
         <ul>
             <li> Cantidad: ${productoDom.cantidad}.&nbsp</li>
             <li> Categoria: ${productoDom.categoria}.&nbsp  </li>
@@ -203,37 +162,21 @@ for (const productoDom of listaProductos) {
     `;
     contenedorListaProductos.appendChild(productoDiv);
 }
-contenedorListaProductos.id = "productosContainer"; // Agregando el ID al contenedor
+contenedorListaProductos.id = "productosContainer";
 document.body.appendChild(contenedorListaProductos);
 
-
-// document.body.appendChild(contenedorListaProductos);
-/////////////////////////////////////// DOM PRODUCTOS
-
-/////////////////////////////////////// APLICAR FILTER
-
+console.log("Esta es la lista de los productos.");
 productos.forEach((productos) => console.log("Nombre: " + productos.nombre + " Año de vencimiento: " + productos.anioVenc));
 alert = ("Vamos a ver cual es el prodcuto que tiene el precio mas bajo.");
 console.log("Vamos a ver cual es el prodcuto que tiene el precio mas bajo.");
 
-
 let buscarInfoProductos = prompt("Ingresar letra o palabra dentro de nombre producto:");
-console.log("Ingresaste: " + buscarInfoProductos + "los productos que contienen lo ingresado son:");
-
+console.log("Ingresaste: " + buscarInfoProductos + ", los productos que contienen lo ingresado son:");
 
 let productosFiltrados = productos.filter((producto) => producto.nombre.includes(buscarInfoProductos));
 productosFiltrados.forEach((producto) => console.log(producto.nombre));
 
-
-// /////////////////////////////////////// APLICAR FILTER
 const productoPrecioMinimo = productos.find(producto => {
     return producto.precioSinIva === productos.reduce((minPrecio, p) => p.precioSinIva < minPrecio ? p.precioSinIva : minPrecio, productos[0].precioSinIva);
 });
 console.log("El producto con menor precio es " + productoPrecioMinimo.nombre + " y su precio es " + productoPrecioMinimo.precioSinIva);
-
-//////////////////////////////////////////////////////////////////////////////// PRODUCTOS - FIN
-
-//////////////////////////////////////////////////////////////////////////////// DOM - INICIO
-
-
-//////////////////////////////////////////////////////////////////////////////// DOM - FIN
